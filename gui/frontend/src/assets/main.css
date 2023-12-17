@@ -1,0 +1,60 @@
+@import "./base.css";
+
+body {
+  background-image: url("../images/main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  color: #0080b5;
+  border: 2px solid #0080b5;
+  background-color: white;
+  border-radius: 8px;
+  width: 170px;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 15px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #0080b5;
+  color: white;
+}
+
+#app {
+  /* max-width: 1280px; */
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: block;
+    place-items: center;
+  }
+
+  #app {
+    /* display: grid; */
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": [
+    "src/env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "./src/@types/**/*.ts"
+  ],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "ignoreDeprecations": "5.0",
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "esModuleInterop": true
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

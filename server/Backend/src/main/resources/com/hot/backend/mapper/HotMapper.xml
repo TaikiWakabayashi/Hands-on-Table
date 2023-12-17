@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hot.backend.mapper.HotMapper">
+
+	<select id="findPrice" resultType="com.hot.backend.entity.HotEntity">
+		SELECT
+			*
+		FROM
+			pokedata
+		WHERE
+			name = #{ name, jdbcType=CHAR }
+		AND
+			cardType = #{ cardType, jdbcType=CHAR }
+		AND
+			expansion = #{ expansion, jdbcType=CHAR }
+		AND
+			collection = #{ collection, jdbcType=CHAR }
+		AND
+			rarity = #{ rarity, jdbcType=CHAR }
+		<if test="type != null">
+			and type = #{ type, jdbcType=CHAR }
+		</if>
+		<if test="promo != null">
+			and promo = #{ promo, jdbcType=CHAR }
+		</if>
+	</select>
+	
+	<select id="findExpansion" resultType="com.hot.backend.entity.HotEntity">
+		SELECT
+			*
+		FROM
+			pokedata
+		WHERE
+			expansion in
+		<foreach collection="expansions" item="expansion" index="index" open="(" separator="," close=")">
+			#{ expansion, jdbcType=CHAR }
+		</foreach>
+	</select>
+	
+	<select id="selectCard" resultType="com.hot.backend.entity.HotEntity">
+		SELECT
+			*
+		FROM
+			pokedata
+		WHERE
+			cardType = #{ cardType, jdbcType=CHAR }
+	</select>
+	
+	<insert id="insert">
+		INSERT into pokedata
+		(
+			name, 
+			cardType, 
+			type, 
+			expansion, 
+			collection, 
+			rarity, 
+			promo,
+			price
+		)
+		value
+		(
+			#{name, jdbcType=CHAR}, 
+			#{cardType, jdbcType=CHAR}, 
+			#{type, jdbcType=CHAR}, 
+			#{expansion, jdbcType=CHAR}, 
+			#{collection, jdbcType=CHAR}, 
+			#{rarity, jdbcType=CHAR}, 
+			#{promo, jdbcType=CHAR},
+			#{price, jdbcType=CHAR}
+		)
+	</insert>
+	
+</mapper>
