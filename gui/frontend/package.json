@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "verion": "0.0.0",
-  "cripts": {
+  "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview --port 4173",
